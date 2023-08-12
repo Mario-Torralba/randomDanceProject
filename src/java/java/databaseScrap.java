@@ -9,6 +9,19 @@ package java;
  *
  * @author Mario
  */
-public class databaseScrap {
-    
+public class DatabaseScrap {
+    public static void main(String[] args) {
+        /**
+ * Con esta método compruebo el Status code de la respuesta que recibo al hacer la petición
+ * EJM:
+ * 		200 OK			300 Multiple Choices
+ * 		301 Moved Permanently	305 Use Proxy
+ * 		400 Bad Request		403 Forbidden
+ * 		404 Not Found		500 Internal Server Error
+ * 		502 Bad Gateway		503 Service Unavailable
+ * @param url
+ * @return Status Code
+ */
+      
+    }
 }
