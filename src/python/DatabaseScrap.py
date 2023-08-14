@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 
+archivo = open("database.sql","w",encoding="Utf-8")
+
 website = "https://kpopping.com/profiles/the-groups/men"
 result = requests.get(website)
 content = result.text
@@ -22,11 +24,16 @@ for item in box:
     soupFor = BeautifulSoup(contentFor, "lxml")
     canciones = soupFor.find_all("div",class_="title-wr")
 
-    print(nombreGrupo + " --> https://kpopping.com" + enlaceGrupo + " " + str(box.index(item)))
+    print("INSERT INTO GRUPO(nombreGrupo,imagenGrupo) VALUES('" + nombreGrupo + "','-');")
+    archivo.write("INSERT INTO GRUPO(nombreGrupo,imagenGrupo) VALUES('" + nombreGrupo + "','-');")
 
-    for item in canciones:
-        if item == []:
+    for item2 in canciones:
+        if item2 == []:
             continue
-        nombreCancion = item.find("a").get_text()
-        print(nombreCancion)
+        nombreCancion = item2.find("a").get_text()
+        if '\'' in nombreCancion:
+            nombreCancion.replace('\'', '`')
+        print("INSERT INTO CANCION(id_grupo,nombreCancion) VALUES(" + str(box.index(item)) + ",'" + nombreCancion +"');")
+        archivo.write("INSERT INTO CANCION(id_grupo,nombreCancion) VALUES(" + str(box.index(item)) + ",'" + nombreCancion +"');")
 
+archivo.close()
