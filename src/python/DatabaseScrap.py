@@ -3,7 +3,7 @@ import requests
 
 archivo = open("database.sql","w",encoding="Utf-8")
 
-website = "https://kpopping.com/profiles/the-groups/men"
+website = "https://kpopping.com/profiles/the-groups/coed"
 result = requests.get(website)
 content = result.text
 
@@ -14,7 +14,7 @@ box = soup.find_all("div",class_="item")
 
 for item in box:
 
-    nombreGrupo = item.find("a").get_text()
+    nombreGrupo = item.find("a").get_text().replace("'","´")
     enlaceGrupo = item.find("a").get("href")
 
     websiteFor = "https://kpopping.com" + enlaceGrupo
@@ -31,9 +31,11 @@ for item in box:
         if item2 == []:
             continue
         nombreCancion = item2.find("a").get_text()
-        if '\'' in nombreCancion:
-            nombreCancion.replace('\'', '`')
-        print("INSERT INTO CANCION(id_grupo,nombreCancion) VALUES(" + str(box.index(item)) + ",'" + nombreCancion +"');")
-        archivo.write("INSERT INTO CANCION(id_grupo,nombreCancion) VALUES(" + str(box.index(item)) + ",'" + nombreCancion +"');")
+        if "'" in nombreCancion:
+            nombreCancion2 = nombreCancion.replace("'", "´")
+        else:
+            nombreCancion2 = nombreCancion
+        print("INSERT INTO CANCION(id_grupo,nombreCancion) VALUES(" + str(box.index(item)) + ",'" + nombreCancion2 +"');")
+        archivo.write("INSERT INTO CANCION(id_grupo,nombreCancion) VALUES(" + str(box.index(item)) + ",'" + nombreCancion2 +"');")
 
 archivo.close()
