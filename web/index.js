@@ -45,7 +45,7 @@ function findAll(grupo,cancion) {
         },
         dataType: 'json',
         success: function (responseText) {
-
+            alert("salida ajax")
             console.log(responseText)
 
         }

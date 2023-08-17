@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java.Controller.action;
+package controller.action;
 
-import java.model.beans.Grupo;
+import model.bean.Grupo;
 
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.model.dao.UsuarioDAO;
+import model.dao.UsuarioDAO;
 
 /**
  *
@@ -34,7 +34,6 @@ public class UsuarioAction {
     public String findall(HttpServletRequest request, HttpServletResponse response){
         UsuarioDAO usuariodao = new UsuarioDAO();
         ArrayList<Grupo> lista = usuariodao.findAll(request.getParameter("GRUPO"), request.getParameter("CANCION"));
-        //return Grupo.toArrayJson(lista);
-        return "hola";
+        return Grupo.toArrayJson(lista);
     }
 }

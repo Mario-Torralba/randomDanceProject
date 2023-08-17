@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java.model.beans;
+package model.bean;
 
 /**
  *
  * @author yo
  */
-public class Mensaje {
+public class Usuario {
     
-    String mensaje;
-    
-    public Mensaje(){
-        
-    }
 }

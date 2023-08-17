@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java.model.dao;
+package model.dao;
 
-import java.model.MotorSQL;
-import java.model.beans.Grupo;
+import model.MotorSQL;
+import model.bean.Grupo;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -33,6 +33,9 @@ public class UsuarioDAO {
             motorsql.connect();
             System.out.println(sql);
             ResultSet rs = motorsql.executeQuery(sql);
+            while(rs.next()){
+                
+            }
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
