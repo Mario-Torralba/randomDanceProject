@@ -1,0 +1,14 @@
+header>div>h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#divInputGrupo{
+    height: 5vh;
+    width: 100%;
+}
+
+#divInputCancion{
+    height: 5vh;
+    width: 100%;
+}

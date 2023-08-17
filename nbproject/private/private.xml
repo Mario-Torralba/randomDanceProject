@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/torra/Documents/GitHub/randomDanceProject/src/java/java/model/MotorSQL.java</file>
+            <file>file:/C:/Users/torra/Documents/GitHub/randomDanceProject/src/java/Controller/action/UsuarioAction.java</file>
             <file>file:/C:/Users/torra/Documents/GitHub/randomDanceProject/web/index.js</file>
+            <file>file:/C:/Users/torra/Documents/GitHub/randomDanceProject/src/java/Controller/Controller.java</file>
             <file>file:/C:/Users/torra/Documents/GitHub/randomDanceProject/web/index.html</file>
-            <file>file:/C:/Users/torra/Documents/GitHub/randomDanceProject/src/java/java/controller/Controller.java</file>
+            <file>file:/C:/Users/torra/Documents/GitHub/randomDanceProject/src/java/model/dao/UsuarioDAO.java</file>
+            <file>file:/C:/Users/torra/Documents/GitHub/randomDanceProject/src/java/model/MotorSQL.java</file>
         </group>
     </open-files>
 </project-private>
