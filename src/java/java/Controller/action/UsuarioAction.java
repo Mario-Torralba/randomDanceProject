@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.action;
+package java.Controller.action;
 
 import java.model.beans.Grupo;
 
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.dao.UsuarioDAO;
+import java.model.dao.UsuarioDAO;
 
 /**
  *

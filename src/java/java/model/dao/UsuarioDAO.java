@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.dao;
+package java.model.dao;
 
-import model.MotorSQL;
+import java.model.MotorSQL;
 import java.model.beans.Grupo;
 import java.sql.ResultSet;
 import java.util.ArrayList;
