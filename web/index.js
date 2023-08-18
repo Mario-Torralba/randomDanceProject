@@ -1,54 +1,48 @@
-// ***********************************************************
-// FUNCION AJAX
+const listaGrupos = document.getElementById("listaGrupos");
 
-// function comprobacionEmpleado(email) {
+document.body.addEventListener("load", initComponents());
 
-//     $.ajax({
-//         url: 'Controller',
-//         data: {
-//             ACTION: "USER.COMPROBADO",
-//             EMAIL: email
-//         },
-//         dataType: 'json',
-//         success: function (responseText) {
+function initComponents() {
+  const inputGrupo = document.getElementById("inputGrupo");
 
+  inputGrupo.addEventListener("submit", () => {
+    let inputGrupo = document.getElementById("inputGrupo");
 
-//             controllerResponse("USER.COMPROBADO", responseText)
-
-//         }
-//     });
-
-// }
-
-document.body.addEventListener("load", initComponents())
-
-function initComponents(){
-
-    const botonForm = document.getElementById('botonInputs')
-
-    botonForm.addEventListener('click',()=>{
-        let inputGrupo = document.getElementById('inputGrupo')
-        let inputCancion = document.getElementById('inputCancion')
-
-        findAll(inputGrupo.value,inputCancion.value)
-    })
+    findGroup(inputGrupo.value);
+  });
 }
 
-function findAll(grupo,cancion) {
-    alert('entrada ajax')
-    $.ajax({
-        url: 'Controller',
-        data: {
-            ACTION: "USUARIO.FINDALL",
-            GRUPO: grupo,
-            CANCION: cancion
-        },
-        dataType: 'json',
-        success: function (responseText) {
-            alert("salida ajax")
-            console.log(responseText)
+function findGroup(grupo) {
+  $.ajax({
+    url: "Controller",
+    data: {
+      ACTION: "USUARIO.FINDALL",
+      GRUPO: grupo,
+    },
+    dataType: "json",
+    success: function (responseText) {
+      console.log(responseText);
+      showGroups(responseText)
+    },
+  });
+}
 
-        }
-    });
+function showGroups(response) {
+  listaGrupos.innerHTML = "";
 
+  try {
+    for (let index = 0; index < 10; index++) {
+      let grupo = document.createElement("div");
+      grupo.id = "grupo";
+
+      let nombreGrupo = document.createElement("div");
+      nombreGrupo.id = "nombreGrupo";
+      nombreGrupo.innerHTML = response[index]["nombreGrupo"]
+      grupo.appendChild(nombreGrupo);
+
+      listaGrupos.appendChild(grupo);
+    }
+  } catch {
+    console.log("Error en el try")
+  }
 }

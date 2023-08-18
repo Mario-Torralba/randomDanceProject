@@ -24,18 +24,32 @@ public class UsuarioDAO {
         this.motorsql = new MotorSQL();
     }
     
-    public ArrayList<Grupo> findAll(String grupo, String cancion){
+    public ArrayList<Grupo> findAll(String grupo){
         
         ArrayList<Grupo>lista = new ArrayList<>();
         String sql = SQL_FIND_ALL;
         
         try{
             motorsql.connect();
+            sql+= "AND UPPER(nombreGrupo) LIKE '%" + grupo.toUpperCase() + "%' ";
+             
             System.out.println(sql);
             ResultSet rs = motorsql.executeQuery(sql);
             while(rs.next()){
-                
+                Grupo grupos = new Grupo();
+                grupos.setNombreGrupo(rs.getString(2));
+                grupos.setId_grupo(rs.getString(1));
+                lista.add(grupos);
             }
+            for (Grupo e : lista) {
+                sql = "SELECT * FROM CANCION WHERE id_grupo = ";
+                sql += "'" + e.getId_grupo() + "' ";
+                rs = motorsql.executeQuery(sql);
+                while(rs.next()){
+                    e.addSong(rs.getString(3));
+                }
+            }
+            
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{

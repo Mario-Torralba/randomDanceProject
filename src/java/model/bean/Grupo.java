@@ -16,10 +16,10 @@ import java.util.ArrayList;
 public class Grupo {
     
     String nombreGrupo;
-    ArrayList<Cancion>listaCanciones;
+    String id_grupo;
+    ArrayList<String>listaCanciones;
     
-    public Grupo(String nombre){
-        this.nombreGrupo = nombre;
+    public Grupo(){
         listaCanciones = new ArrayList<>();
     }
     
@@ -31,5 +31,28 @@ public class Grupo {
         String resp = gson.toJson(lista);
 
         return resp;
+    }
+    public void addSong(String cancion){
+        listaCanciones.add(cancion);
+    }
+    public String getNombreGrupo() {
+        return nombreGrupo;
+    }
+    public void setNombreGrupo(String nombreGrupo) {
+        this.nombreGrupo = nombreGrupo;
+    }
+    public ArrayList<String> getListaCanciones() {
+        return listaCanciones;
+    }
+    public void setListaCanciones(ArrayList<String> listaCanciones) {
+        this.listaCanciones = listaCanciones;
+    }
+
+    public String getId_grupo() {
+        return id_grupo;
+    }
+
+    public void setId_grupo(String id_grupo) {
+        this.id_grupo = id_grupo;
     }
 }

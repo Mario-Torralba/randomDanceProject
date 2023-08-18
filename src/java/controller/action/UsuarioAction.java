@@ -33,7 +33,7 @@ public class UsuarioAction {
     }
     public String findall(HttpServletRequest request, HttpServletResponse response){
         UsuarioDAO usuariodao = new UsuarioDAO();
-        ArrayList<Grupo> lista = usuariodao.findAll(request.getParameter("GRUPO"), request.getParameter("CANCION"));
+        ArrayList<Grupo> lista = usuariodao.findAll(request.getParameter("GRUPO"));
         return Grupo.toArrayJson(lista);
     }
 }
