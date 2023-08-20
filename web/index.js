@@ -1,13 +1,16 @@
 const listaGrupos = document.getElementById("listaGrupos");
+var grupos = document.querySelectorAll('.grupo')
 
 document.body.addEventListener("load", initComponents());
 
 function initComponents() {
-  const inputGrupo = document.getElementById("inputGrupo");
 
-  inputGrupo.addEventListener("submit", () => {
-    let inputGrupo = document.getElementById("inputGrupo");
 
+  let inputGrupo = document.getElementById("inputGrupo");
+
+  
+
+  inputGrupo.addEventListener("change", () => {
     findGroup(inputGrupo.value);
   });
 }
@@ -33,7 +36,7 @@ function showGroups(response) {
   try {
     for (let index = 0; index < 10; index++) {
       let grupo = document.createElement("div");
-      grupo.id = "grupo";
+      grupo.className = "grupo";
 
       let nombreGrupo = document.createElement("div");
       nombreGrupo.id = "nombreGrupo";
@@ -41,7 +44,16 @@ function showGroups(response) {
       grupo.appendChild(nombreGrupo);
 
       listaGrupos.appendChild(grupo);
+      
     }
+    var grupos = document.querySelectorAll('.grupo')
+    grupos.forEach(e => {
+    
+      e.addEventListener("click",() =>{
+        alert('a')
+      })
+  
+    });
   } catch {
     console.log("Error en el try")
   }
