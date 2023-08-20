@@ -32,6 +32,17 @@ public class Grupo {
 
         return resp;
     }
+
+    public static String toArrayJsonIndividual(Grupo lista){
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+
+        Gson gson = builder.create();
+        String resp = gson.toJson(lista);
+
+        return resp;
+    }
+
     public void addSong(String cancion){
         listaCanciones.add(cancion);
     }

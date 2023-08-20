@@ -58,4 +58,42 @@ public class UsuarioDAO {
         return lista;
         
     }
+
+    public Grupo findCancion(String grupo){
+
+        Grupo grupos = new Grupo();
+        String sql = SQL_FIND_ALL;
+        
+        try{
+            motorsql.connect();
+            sql+= "AND UPPER(nombreGrupo) LIKE '" + grupo.toUpperCase() + "' ";
+             
+            System.out.println(sql);
+            ResultSet rs = motorsql.executeQuery(sql);
+            
+            while(rs.next()){
+
+                grupos.setNombreGrupo(rs.getString(2));
+                grupos.setId_grupo(rs.getString(1));
+            }
+                
+            
+            
+            sql = "SELECT * FROM CANCION WHERE id_grupo = ";
+            sql += "'" + grupos.getId_grupo() + "' ";
+            rs = motorsql.executeQuery(sql);
+            while(rs.next()){
+                grupos.addSong(rs.getString(3));
+            }
+            
+            
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            motorsql.disconnect();
+        }
+        return grupos;
+        
+    }
+
 }

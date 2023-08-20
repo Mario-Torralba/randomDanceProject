@@ -28,6 +28,9 @@ public class UsuarioAction {
             case "FINDALL":
                 pagDestino = findall(request, response);
                 break;
+            case "FINDCANCION":
+                pagDestino = findCancion(request, response);
+                break;
         }
         return pagDestino;
     }
@@ -36,4 +39,10 @@ public class UsuarioAction {
         ArrayList<Grupo> lista = usuariodao.findAll(request.getParameter("GRUPO"));
         return Grupo.toArrayJson(lista);
     }
+    public String findCancion(HttpServletRequest request, HttpServletResponse response){
+        UsuarioDAO usuariodao = new UsuarioDAO();
+        Grupo lista = usuariodao.findCancion(request.getParameter("GRUPO"));
+        return Grupo.toArrayJsonIndividual(lista);
+    }
+
 }
