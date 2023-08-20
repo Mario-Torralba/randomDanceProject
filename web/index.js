@@ -69,7 +69,6 @@ function showGroups(response) {
     
       e.addEventListener("click",() =>{
         let nombre = e.querySelector('#nombreGrupo')
-        alert(nombre.innerHTML)
         eleccionGrupo.innerHTML = ""
         findCancion(nombre.innerHTML)
       })

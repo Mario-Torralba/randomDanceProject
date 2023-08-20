@@ -5,6 +5,8 @@
  */
 package controller.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import model.bean.Grupo;
 
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import model.dao.UsuarioDAO;
 public class UsuarioAction {
     
     
-    public String execute(HttpServletRequest request, HttpServletResponse response) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String pagDestino = "";
         String action = request.getParameter("ACTION");
 
@@ -34,7 +36,10 @@ public class UsuarioAction {
         }
         return pagDestino;
     }
-    public String findall(HttpServletRequest request, HttpServletResponse response){
+    public String findall(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        String ip = request.getRemoteAddr();
+        System.out.println(ip);
+
         UsuarioDAO usuariodao = new UsuarioDAO();
         ArrayList<Grupo> lista = usuariodao.findAll(request.getParameter("GRUPO"));
         return Grupo.toArrayJson(lista);
